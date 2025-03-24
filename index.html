@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Styler</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        dt{
+            font-size: 25px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+        .align-buttons button:hover{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+
+        <dl class="d-flex justify-content-around">
+            <div>
+                <dt>Font Size</dt>
+                <dd><input type="range" min="5" max="100" id="fontSize" onchange="changeStyle()"></dd>
+            </div>
+
+            <div>
+                <dt>Color</dt>
+                <dd><input type="color" id="colorPicker" onchange="changeStyle()"></dd>
+            </div>
+
+            <div>
+                <dt>Style</dt>
+                <dd>
+                    <select id="style" onchange="changeStyle()">
+                        <option value="normal">Normal</option>
+                        <option value="bold">Bold</option>
+                        <option value="italic">Italic</option>
+                    </select>
+                </dd>
+            </div>
+
+            <div class="align-buttons">
+                <dt>Align</dt>
+                <dd >
+                    <button onclick="changeAlignment('left')" >L</button>
+                    <button onclick="changeAlignment('center')">C</button>
+                    <button onclick="changeAlignment('right')">R</button>
+                </dd>
+            </div>
+        </dl>
+    
+
+    <h1 id="text" style="text-align: center; font-family: brush script mt; border: 2px dotted black;">Hey 👋...Welcome to Javascript classes❤️</h1>  
+
+    <script>
+        function changeStyle(){
+            let text = document.getElementById("text");
+            let fontSize = document.getElementById("fontSize").value;
+            let colorPicker = document.getElementById("colorPicker").value;
+            let style = document.getElementById("style").value;
+
+            text.style.fontSize = fontSize +"px";  
+            text.style.color = colorPicker;  
+
+            // Apply font style (bold / italic / underline)
+            text.style.fontStyle = style === "bold" ? "bold" : "normal";
+            text.style.fontStyle = style === "italic" ? "italic" : "normal";
+            
+        }
+
+        function changeAlignment(align) {
+            let text = document.getElementById("text");
+            text.style.textAlign = align;
+        }
+    </script>
+
+</body>
+</html>
